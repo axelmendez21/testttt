@@ -42,7 +42,16 @@ class User:
             self.last_login = f'{months[month]} {day}, {year}'
             
         
-
+class Admin(User):
+    def __init__(self, first_name, last_name,user_id,last_login,password):
+        super().__init__(first_name, last_name,user_id,last_login,password)
+        self.privileges = []
+    def show_privileges(self):
+        print(f"{self.first_name} {self.last_name} has the following privileges:")
+        for privilege in self.privileges:
+            print(f"{privilege}")
+    def add_privilege(self, privilege):
+        self.privileges.append(privilege)
 
 # hard-coded calls
 jim = User(first_name='Jim',
@@ -62,5 +71,16 @@ joe.describe_user()
 joe.new_login(2, 3, 2025)
 joe.describe_user()
 joe.new_login(15, 3, 2025)
-joe.new_login(2, 35,  2025)
-joe.new_login(2, 3, -55)  
+joe.new_login(2, 35, 2025)
+joe.new_login(2, 3, -55)
+
+alice = Admin('Alice',
+              'Wonder',
+              1,
+              'September 3, 2022',
+              'P@ssw0rd')
+alice.add_privilege('delete post')
+alice.add_privilege('delete user')
+alice.add_privilege('add user')
+alice.add_privilege('give admin rights')
+alice.show_privileges()
