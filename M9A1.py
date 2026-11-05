@@ -18,7 +18,7 @@ with open("populationdata.txt",'w') as file_object:
     for city, population in population_dict.items():
         if int(population) > int(small):
             print(f"{city}, {population}", file = file_object)
-    print("Small Cities:", file = file_object)
+    print("Small Towns:", file = file_object)
     for city, population in population_dict.items():
         if int(population) <= int(small):
             print(f"{city}, {population}",file = file_object)
